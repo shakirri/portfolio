@@ -4,9 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Redwanul Islam Shakir — Software Engineer</title>
+  <meta name="description" content="Redwanul Islam Shakir — Software Engineer based in Milan. Full-stack developer specializing in .NET, Python, Django, fintech integrations, and scalable systems. Available for opportunities." />
+  <meta name="keywords" content="Software Engineer, .NET, Python, Django, Fintech, Full-Stack Developer, Milan, Portfolio, BNX, bKash, Unreal Engine, Arduino" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://shakirri.github.io/portfolio/" />
+  <link rel="alternate" hreflang="en" href="https://shakirri.github.io/portfolio/" />
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -605,10 +611,9 @@
 <body>
 
 <canvas id="bg-canvas"></canvas>
-
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">ris<span>.dev</span></a>
+  <a href="#hero" class="nav-logo">shakirri<span>.portfolio</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -622,6 +627,8 @@
     <span></span><span></span><span></span>
   </div>
 </nav>
+
+<main id="content">
 
 <!-- HERO -->
 <section id="hero">
@@ -924,12 +931,50 @@
 </section>
 
 <!-- FOOTER -->
+  </main>
+
 <footer>
-  <div class="footer-left">// ris.dev · Milan, Italy</div>
+  <div class="footer-left">// shakirri · Milan, Italy</div>
   <div class="footer-right">Built with <span>♥</span> by Redwanul Islam Shakir</div>
 </footer>
 
 <script>
+  /* JSON-LD structured data for SEO */
+  (function(){
+    const ld = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Redwanul Islam Shakir",
+      "url": "https://shakirri.github.io/portfolio/",
+      "sameAs": [
+        "https://linkedin.com/in/shakirri",
+        "https://github.com/shakirri"
+      ],
+      "jobTitle": "Software Engineer",
+      "worksFor": { "@type": "Organization", "name": "shakirri" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Milan", "addressCountry": "IT" }
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.text = JSON.stringify(ld);
+    document.head.appendChild(s);
+  })();
+
+  /* Open Graph & Twitter Card meta tags (added dynamically to avoid duplicate meta nodes) */
+  (function(){
+    const meta = (attr, value, prop) => { const m = document.createElement('meta'); m.setAttribute(prop? 'property':'name', attr); m.content = value; document.head.appendChild(m); };
+    meta('og:type','website', true);
+    meta('og:title','Redwanul Islam Shakir — Software Engineer', true);
+    meta('og:description','Full-stack developer specializing in .NET, Python, Django, and fintech integrations. Available for opportunities.', true);
+    meta('og:url','https://shakirri.github.io/portfolio/', true);
+    meta('og:site_name','shakirri', true);
+    meta('og:image','https://shakirri.github.io/portfolio/og-image.svg', true);
+
+    meta('twitter:card','summary_large_image');
+    meta('twitter:creator','@shakirri');
+    meta('twitter:title','Redwanul Islam Shakir — Software Engineer');
+    meta('twitter:description','Full-stack developer specializing in .NET, Python, Django, and fintech integrations. Available for opportunities.');
+  })();
   /* ── CANVAS PARTICLE GRID ── */
   (function() {
     const canvas = document.getElementById('bg-canvas');
