@@ -75,6 +75,100 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.65'/%3E%3C/svg%3E");
     }
 
+    .ambient-signal {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.86;
+      contain: paint;
+    }
+
+    .ambient-signal::before,
+    .ambient-signal::after {
+      content: "";
+      position: absolute;
+      inset: -18%;
+      pointer-events: none;
+    }
+
+    .ambient-signal::before {
+      inset: auto;
+      top: -36vh;
+      left: 10vw;
+      width: clamp(220px, 34vw, 520px);
+      height: 172vh;
+      opacity: 0.82;
+      background:
+        linear-gradient(90deg,
+          transparent 0 10%,
+          rgba(216, 255, 97, 0.035) 22%,
+          rgba(216, 255, 97, 0.25) 44%,
+          rgba(244, 239, 227, 0.18) 50%,
+          rgba(243, 105, 63, 0.1) 58%,
+          transparent 88% 100%);
+      border-left: 1px solid rgba(216, 255, 97, 0.13);
+      border-right: 1px solid rgba(244, 239, 227, 0.08);
+      transform: translate3d(-2vw, 0, 0) rotate(18deg);
+    }
+
+    .ambient-signal::after {
+      opacity: 0.48;
+      background:
+        repeating-linear-gradient(101deg, transparent 0 94px, rgba(244, 239, 227, 0.08) 95px 96px, transparent 97px 180px),
+        repeating-linear-gradient(101deg, transparent 0 260px, rgba(216, 255, 97, 0.14) 261px 263px, transparent 264px 520px),
+        radial-gradient(circle at 18% 24%, rgba(216, 255, 97, 0.11), transparent 22rem),
+        radial-gradient(circle at 78% 70%, rgba(243, 105, 63, 0.085), transparent 26rem);
+      transform: translate3d(6%, -6%, 0) rotate(-11deg);
+    }
+
+    @supports (animation-timeline: scroll(root)) {
+      .ambient-signal::before {
+        animation: signal-band-sweep linear both;
+        animation-timeline: scroll(root);
+      }
+
+      .ambient-signal::after {
+        animation: signal-streak-drift linear both;
+        animation-timeline: scroll(root);
+      }
+    }
+
+    @keyframes signal-band-sweep {
+      from {
+        opacity: 0.7;
+        transform: translate3d(-6vw, -4vh, 0) rotate(18deg);
+      }
+
+      52% {
+        opacity: 0.82;
+        transform: translate3d(18vw, 2vh, 0) rotate(18deg);
+      }
+
+      to {
+        opacity: 0.58;
+        transform: translate3d(48vw, 8vh, 0) rotate(18deg);
+      }
+    }
+
+    @keyframes signal-streak-drift {
+      from {
+        opacity: 0.36;
+        transform: translate3d(8%, -8%, 0) rotate(-11deg);
+      }
+
+      48% {
+        opacity: 0.54;
+        transform: translate3d(0, 0, 0) rotate(-11deg);
+      }
+
+      to {
+        opacity: 0.42;
+        transform: translate3d(-7%, 7%, 0) rotate(-11deg);
+      }
+    }
+
     a { color: inherit; }
     img { display: block; max-width: 100%; }
     button, input, textarea { font: inherit; }
@@ -832,6 +926,15 @@
         transition-duration: 0.01ms !important;
       }
 
+      .ambient-signal {
+        opacity: 0.58;
+      }
+
+      .ambient-signal::before,
+      .ambient-signal::after {
+        animation: none !important;
+      }
+
       .reveal {
         opacity: 1;
         transform: none;
@@ -978,6 +1081,7 @@
   </style>
 </head>
 <body>
+  <div class="ambient-signal" aria-hidden="true"></div>
   <nav class="site-nav" aria-label="Primary navigation">
     <a href="#hero" class="brand" aria-label="Redwanul Islam Shakir home">
       <span class="brand-mark">RS</span>
